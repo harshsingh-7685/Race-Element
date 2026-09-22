@@ -62,7 +62,8 @@ public partial class Info : UserControl
         ToolTipService.SetInitialShowDelay(buttonDonate, 1);
         ToolTipService.SetInitialShowDelay(buttonGuidesWebsite, 1);
 
-        new Thread(() => CheckNewestVersion()).Start();
+        if (Util.Updater.AppUpdater.IsEnabled)
+            new Thread(() => CheckNewestVersion()).Start();
 
         this.IsVisibleChanged += (s, e) =>
         {
@@ -81,6 +82,9 @@ public partial class Info : UserControl
 
     private async void CheckNewestVersion()
     {
+        if (!Util.Updater.AppUpdater.IsEnabled)
+            return;
+
         Thread.Sleep(500);
 
         RemoveTempVersionFile();

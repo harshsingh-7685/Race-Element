@@ -11,8 +11,14 @@ namespace RaceElement.Controls.Util.Updater;
 
 internal sealed class AppUpdater
 {
+    // Official releases would overwrite this custom build. No runtime setting can enable them.
+    internal static bool IsEnabled => false;
+
     internal void Update(ReleaseAsset asset)
     {
+        if (!IsEnabled)
+            return;
+
         if (!Verify(asset))
         {
             LogWriter.WriteToLog("AutoUpdater: Unable to verify release asset.");

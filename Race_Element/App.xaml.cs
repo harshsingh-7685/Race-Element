@@ -27,7 +27,7 @@ public partial class App : Application
     internal bool StartMinimized { get; private set; } = false;
 
     internal StartScreenOverlay _startScreenOverlay;
-    private readonly Mutex mutex = new(true, "8f81b9c5-284a-4458-98be-2387c9046562");
+    private readonly Mutex mutex = new(true, "8f81b9c5-284a-4458-98be-2387c9046562-ea-wrc");
 
     public App()
     {
@@ -53,7 +53,7 @@ public partial class App : Application
         {
             Thread writerThread = new(x =>
             {
-                NamedPipeClientStream client = new("8f81b9c5-284a-4458-98be-2387c9046562");
+                NamedPipeClientStream client = new("8f81b9c5-284a-4458-98be-2387c9046562-ea-wrc");
                 try
                 {
                     client.Connect(0);
@@ -104,7 +104,7 @@ public partial class App : Application
         {
             while (MainWindow.IsEnabled)
             {
-                NamedPipeServerStream server = new("8f81b9c5-284a-4458-98be-2387c9046562", PipeDirection.InOut, 1, PipeTransmissionMode.Byte);
+                NamedPipeServerStream server = new("8f81b9c5-284a-4458-98be-2387c9046562-ea-wrc", PipeDirection.InOut, 1, PipeTransmissionMode.Byte);
                 server.WaitForConnection();
                 using BinaryReader reader = new(server);
                 string args = reader.ReadString();

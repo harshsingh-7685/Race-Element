@@ -213,7 +213,7 @@
                                     - Select a Race Weekend and go to the Current tab.<LineBreak/>
                                     - Reload the Local race weekends list by re-opening the Telemetry tab.<LineBreak/>
                                     - Drag and drop .rwdb(Race weekend databases) ontop of the app to view them.<LineBreak/>
-                                    - Race weekend databases are saved in %appdata%/Race Element/Data.<LineBreak/>
+                                    - Race weekend databases are saved in %appdata%/Race Element EA WRC/Data.<LineBreak/>
                                     - Right click the laptime table to copy the lap data to clipboard in CSV format (comma seperated).<LineBreak/>
                                     <!--- When extended telemetry is recorded, select a lap and check out the charts.<LineBreak/>-->
                                 </TextBlock>

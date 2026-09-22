@@ -45,7 +45,8 @@ internal sealed class DualSenseXFreeOverlay : AbstractOverlay
 
     public override void BeforeStart()
     {
-        _textFile = new FileInfo($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}DualSenseXTriggerStates.txt");
+        Directory.CreateDirectory(RaceElement.Util.FileUtil.RaceElementAppDataPath);
+        _textFile = new FileInfo(Path.Combine(RaceElement.Util.FileUtil.RaceElementAppDataPath, "DualSenseXTriggerStates.txt"));
         Debug.WriteLine(_textFile.FullName);
         if (!_textFile.Exists)
             _textFile.Create();

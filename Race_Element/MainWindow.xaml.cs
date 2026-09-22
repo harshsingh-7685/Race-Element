@@ -352,7 +352,7 @@ public partial class MainWindow : Window
                 Icon = System.Drawing.Icon.ExtractAssociatedIcon(Process.GetCurrentProcess().MainModule.FileName),
                 Visible = false,
                 ContextMenuStrip = CreateContextMenu(),
-                Text = "Race Element"
+                Text = "Race Element — EA WRC Build"
             };
 
             _notifyIcon.DoubleClick += (s, e) =>

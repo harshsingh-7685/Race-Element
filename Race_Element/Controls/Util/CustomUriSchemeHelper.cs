@@ -13,6 +13,9 @@ public static class CustomUriSchemeHelper
 {
     public static bool OptionRegisterEachTime = true;
 
+    // Preserve production URI, file and Discord associations in this custom build.
+    private static bool RegistrationEnabled => false;
+
     private const string UriSchemeLabel = "raceelement";
     public const string UriScheme = UriSchemeLabel + ":";
 
@@ -26,6 +29,9 @@ public static class CustomUriSchemeHelper
 
     private static void RegisterClass(string className, string title, bool urlProtocol, int iconId, bool isEnabled, string openCommand)
     {
+        if (!RegistrationEnabled)
+            return;
+
         var path = $@"Software\Classes\{className}";
         if (!isEnabled)
         {
@@ -59,6 +65,9 @@ public static class CustomUriSchemeHelper
 
     private static void RegisterExtension(string ext, string description, bool isEnabled, int iconId)
     {
+        if (!RegistrationEnabled)
+            return;
+
         var className = $@"{ClassName}{ext.ToLowerInvariant()}";
         RegisterClass(className, description, false, iconId, isEnabled, @"{0} ""%1""");
 

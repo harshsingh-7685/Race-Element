@@ -19,7 +19,7 @@ public partial class TitleBar : UserControl
 {
     internal static TitleBar Instance { get; private set; }
 
-    private const string _AppName = "Race Element";
+    private const string _AppName = "Race Element — EA WRC Build";
 
     public TitleBar()
     {
@@ -166,6 +166,9 @@ public partial class TitleBar : UserControl
 
     public void SetUpdateButton(string version, string releaseNotes, ReleaseAsset asset)
     {
+        if (!AppUpdater.IsEnabled)
+            return;
+
         updateButton.Visibility = Visibility.Visible;
         updateButton.Content = $"Update to {version}";
         updateButton.ToolTip = releaseNotes;
