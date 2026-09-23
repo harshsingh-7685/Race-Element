@@ -71,6 +71,7 @@ public partial class MainWindow : Window
             {
                 EnqueueSnackbarMessage("Shutting down Race Element");
                 MainWindow.Instance.SaveLocation();
+                App.Instance.StopEAWrcDiagnosticSession();
                 Environment.Exit(0);
             }
         };
@@ -225,6 +226,12 @@ public partial class MainWindow : Window
     {
         App.Instance._startScreenOverlay.Stop();
         App.Instance._startScreenOverlay.Dispose();
+
+        if (App.Instance.EAWrcDiagnosticActive)
+        {
+            TitleBar.Instance.SetAppTitle("EA WRC Diagnostic Logging");
+            EnqueueSnackbarMessage("EA WRC diagnostic logging is active on UDP 20877.");
+        }
 
         ThreadPool.QueueUserWorkItem(x =>
         {

@@ -1,0 +1,52 @@
+{
+	"versions":
+	{
+		"schema": 1,
+		"data": 3
+	},
+	"id": "race_element",
+	"header":
+	{
+		"channels": [
+			"packet_4cc"
+		]
+	},
+	"packets": [
+		{
+			"id": "session_update",
+			"channels": [
+				"packet_uid",
+				"game_total_time",
+				"game_delta_time",
+				"game_frame_count",
+				"vehicle_speed",
+				"vehicle_transmission_speed",
+				"vehicle_velocity_x",
+				"vehicle_velocity_y",
+				"vehicle_velocity_z",
+				"vehicle_forward_direction_x",
+				"vehicle_forward_direction_y",
+				"vehicle_forward_direction_z",
+				"vehicle_hub_position_bl",
+				"vehicle_hub_position_br",
+				"vehicle_hub_position_fl",
+				"vehicle_hub_position_fr",
+				"vehicle_hub_velocity_bl",
+				"vehicle_hub_velocity_br",
+				"vehicle_hub_velocity_fl",
+				"vehicle_hub_velocity_fr",
+				"vehicle_cp_forward_speed_bl",
+				"vehicle_cp_forward_speed_br",
+				"vehicle_cp_forward_speed_fl",
+				"vehicle_cp_forward_speed_fr",
+				"vehicle_throttle",
+				"vehicle_brake",
+				"vehicle_clutch",
+				"vehicle_steering",
+				"vehicle_handbrake",
+				"stage_current_time",
+				"stage_current_distance"
+			]
+		}
+	]
+}

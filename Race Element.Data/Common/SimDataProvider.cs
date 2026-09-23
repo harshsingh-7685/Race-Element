@@ -18,6 +18,7 @@ using RaceElement.Data.Games.BeamNG;
 using RaceElement.Data.Games.RichardBurnsRally;
 using RaceElement.Data.Common.SimulatorData.LocalPlane;
 using RaceElement.Data.Games.MicrosoftFlightSimulator;
+using RaceElement.Data.Games.EASportsWRC;
 
 namespace RaceElement.Data.Common;
 
@@ -217,6 +218,13 @@ public static class SimDataProvider
             case Game.RichardBurnsRally:
                 {
                     Instance ??= new RBRDataProvider();
+                    Instance.Update(ref _localCarData, ref _session, ref _gameData);
+                    _localCarEventLoop.Run();
+                    break;
+                }
+            case Game.EASportsWRC:
+                {
+                    Instance ??= new EAWrcDataProvider();
                     Instance.Update(ref _localCarData, ref _session, ref _gameData);
                     _localCarEventLoop.Run();
                     break;

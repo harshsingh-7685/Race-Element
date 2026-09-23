@@ -15,6 +15,7 @@ using System.Threading;
 using System.Windows;
 using RaceElement.Core.Jobs.Timer;
 using RaceElement.Data.ACC.Core.Game;
+using RaceElement.Data.Games.EASportsWRC.Diagnostics;
 
 namespace RaceElement;
 
@@ -25,9 +26,11 @@ public partial class App : Application
 {
     internal static App Instance { get; private set; }
     internal bool StartMinimized { get; private set; } = false;
+    internal bool EAWrcDiagnosticActive { get; private set; }
 
     internal StartScreenOverlay _startScreenOverlay;
     private readonly Mutex mutex = new(true, "8f81b9c5-284a-4458-98be-2387c9046562-ea-wrc");
+    private EAWrcDiagnosticSession _eaWrcDiagnosticSession;
 
     public App()
     {
@@ -179,10 +182,14 @@ public partial class App : Application
         if (e.Args.Length != 0)
             LogWriter.WriteToLog(sb.ToString());
 
+        bool eaWrcDiagnosticRequested = false;
         for (int i = 0; i != e.Args.Length; ++i)
         {
             if (e.Args[i] == "/StartMinimized")
                 StartMinimized = true;
+
+            if (string.Equals(e.Args[i], "/EAWrcDiagnostic", StringComparison.OrdinalIgnoreCase))
+                eaWrcDiagnosticRequested = true;
 
             if (e.Args[i].StartsWith("raceelement://"))
                 HandleCustomUriScheme(e.Args[i]);
@@ -196,6 +203,24 @@ public partial class App : Application
         using Process current = Process.GetCurrentProcess();
         current.PriorityClass = ProcessPriorityClass.BelowNormal;
         RegisterProtocol();
+
+        if (eaWrcDiagnosticRequested)
+        {
+            if (isAnotherInstanceRunning)
+            {
+                LogWriter.WriteToLog("EA WRC diagnostics were requested, but another EA WRC custom build instance is already running. Start diagnostics from a closed application.");
+            }
+            else
+            {
+                _eaWrcDiagnosticSession = new EAWrcDiagnosticSession(message => LogWriter.WriteToLog(message));
+                EAWrcDiagnosticActive = _eaWrcDiagnosticSession.Start();
+                if (!EAWrcDiagnosticActive)
+                {
+                    _eaWrcDiagnosticSession.Dispose();
+                    _eaWrcDiagnosticSession = null;
+                }
+            }
+        }
     }
 
     private void RegisterProtocol()
@@ -246,8 +271,17 @@ public partial class App : Application
         }
     }
 
+    internal void StopEAWrcDiagnosticSession()
+    {
+        EAWrcDiagnosticSession session = _eaWrcDiagnosticSession;
+        _eaWrcDiagnosticSession = null;
+        EAWrcDiagnosticActive = false;
+        session?.Dispose();
+    }
+
     private void App_Exit(object sender, ExitEventArgs e)
     {
+        StopEAWrcDiagnosticSession();
         JobTimerExecutor.Instance().Dispose();
         AccScheduler.UnregisterJobs();
     }

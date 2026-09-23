@@ -29,6 +29,7 @@ public enum Game : long
     MicrosoftFlightSimulator2020 = 1 << 20,
     MicrosoftFlightSimulator2024 = 1 << 21,
     ForzaHorizon6 = 1 << 22,
+    EASportsWRC = 1 << 23,
 }
 
 public static class GameExtensions
@@ -58,7 +59,8 @@ public static class GameExtensions
             { Game.RichardBurnsRally, "Richard Burns Rally" },
             { Game.MicrosoftFlightSimulator2020, "Microsoft Flight Simulator 2020" },
             { Game.MicrosoftFlightSimulator2024, "Microsoft Flight Simulator 2024" },
-            { Game.ForzaHorizon6, "Forza Horizon 6" }
+            { Game.ForzaHorizon6, "Forza Horizon 6" },
+            { Game.EASportsWRC, "EA SPORTS WRC" }
         }.ToImmutableDictionary();
     }
 
@@ -87,7 +89,8 @@ public static class GameExtensions
             { Game.RichardBurnsRally, "RBR" },
             { Game.MicrosoftFlightSimulator2020, "MFS2020" },
             { Game.MicrosoftFlightSimulator2024, "MFS2024" },
-            { Game.ForzaHorizon6, "FH6" }
+            { Game.ForzaHorizon6, "FH6" },
+            { Game.EASportsWRC, "EA WRC" }
         }.ToImmutableDictionary();
     }
 
@@ -119,7 +122,8 @@ public static class GameExtensions
             { "RichardBurnsRally", Game.RichardBurnsRally },
             { "FlightSimulator", Game.MicrosoftFlightSimulator2020  },
             { "FlightSimulator2024", Game.MicrosoftFlightSimulator2024 },
-            { "forzahorizon6", Game.ForzaHorizon6 }
+            { "forzahorizon6", Game.ForzaHorizon6 },
+            { "WRC", Game.EASportsWRC }
         }.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
 
         public static readonly Lazy<ImmutableArray<string>> All = new(() => ImmutableArray.Create(ProcessMap.Select(x => x.Key).ToArray()));
@@ -150,7 +154,8 @@ public static class GameExtensions
             { Game.RichardBurnsRally, -1 },
             { Game.MicrosoftFlightSimulator2020, 1250410 },
             { Game.MicrosoftFlightSimulator2024, 2537590 },
-            { Game.ForzaHorizon6, 2483190 }
+            { Game.ForzaHorizon6, 2483190 },
+            { Game.EASportsWRC, 1849250 }
         }.ToImmutableDictionary();
     }
 
