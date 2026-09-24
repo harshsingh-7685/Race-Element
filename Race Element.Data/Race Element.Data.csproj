@@ -23,6 +23,7 @@
 		<None Remove="Games\Resources\Icons\ATS.ico" />
 		<None Remove="Games\Resources\Icons\BeamNG.ico" />
 		<None Remove="Games\Resources\Icons\DR2.ico" />
+		<None Remove="Games\Resources\Icons\EA WRC.ico" />
 		<None Remove="Games\Resources\Icons\FH4.ico" />
 		<None Remove="Games\Resources\Icons\FH5.ico" />
 		<None Remove="Games\Resources\Icons\FH6.ico" />
@@ -39,6 +40,7 @@
 		<None Remove="Games\Resources\Logos\ATS.jpg" />
 		<None Remove="Games\Resources\Logos\BeamNG.jpg" />
 		<None Remove="Games\Resources\Logos\DR2.jpg" />
+		<None Remove="Games\Resources\Logos\EA WRC.jpg" />
 		<None Remove="Games\Resources\Logos\FH4.jpg" />
 		<None Remove="Games\Resources\Logos\FH5.jpg" />
 		<None Remove="Games\Resources\Logos\FH6.jpg" />
@@ -86,6 +88,7 @@
 		<EmbeddedResource Include="Games\Resources\Icons\ATS.ico" />
 		<EmbeddedResource Include="Games\Resources\Icons\BeamNG.ico" />
 		<EmbeddedResource Include="Games\Resources\Icons\DR2.ico" />
+		<EmbeddedResource Include="Games\Resources\Icons\EA WRC.ico" />
 		<EmbeddedResource Include="Games\Resources\Icons\ETS2.ico" />
 		<EmbeddedResource Include="Games\Resources\Icons\FH4.ico" />
 		<EmbeddedResource Include="Games\Resources\Icons\FH5.ico" />
@@ -108,6 +111,7 @@
 		<EmbeddedResource Include="Games\Resources\Logos\ATS.jpg" />
 		<EmbeddedResource Include="Games\Resources\Logos\BeamNG.jpg" />
 		<EmbeddedResource Include="Games\Resources\Logos\DR2.jpg" />
+		<EmbeddedResource Include="Games\Resources\Logos\EA WRC.jpg" />
 		<EmbeddedResource Include="Games\Resources\Logos\ETS2.jpg" />
 		<EmbeddedResource Include="Games\Resources\Logos\FH4.jpg" />
 		<EmbeddedResource Include="Games\Resources\Logos\FH5.jpg" />
